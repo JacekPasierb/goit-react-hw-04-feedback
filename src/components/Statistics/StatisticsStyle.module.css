@@ -1,0 +1,14 @@
+.statList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.statItem {
+  display: flex;
+  flex-direction: row;
+  gap: 17px;
+}
+.statText {
+  font-size: 25px;
+}

@@ -1,0 +1,24 @@
+.widget {
+  display: flex;
+  flex-direction: column;
+}
+.btnsWidget {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.btnWidget {
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid grey;
+  padding-inline: 20px;
+
+  transition: 750ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.btnWidget:hover {
+  background-color: rgba(11, 11, 97, 0.575);
+  cursor: pointer;
+}
+.btnWidgetText {
+  font-size: 28px;
+}
