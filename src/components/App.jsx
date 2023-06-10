@@ -1,36 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Statistics } from './Statistics/Statistics';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Notification } from './Notification/Notification';
 import { Section } from './Section/Section';
 
-export class App extends Component {
-  state = {
-    // CZY STAN POWINIEN BYĆ W KONSTRUKTORZE ?
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-  options = Object.keys(this.state);
+export const App = () => {
+  const { good, setGood } = useState(0);
+  const { neutral, setNeutral } = useState(0);
+  const { bad, setBad } = useState(0);
+ 
+ 
   plusVoice = option => {
-    this.setState(prevState => ({ [option]: prevState[option] + 1 }));
+    set{option}(option+1)
+   
   };
 
   countTotalFeedback() {
-    const { good, neutral, bad } = this.state;
+   
     const total = good + neutral + bad;
 
     return total;
   }
 
   countPositiveFeedbackPercentage() {
-    const { good } = this.state;
+    
     const percentage = Math.round((good / this.countTotalFeedback()) * 100);
 
     return percentage;
   }
-  render() {
-    const { good, neutral, bad } = this.state;
+  
+    
 
     return (
       <div
@@ -46,7 +45,7 @@ export class App extends Component {
       >
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.options}
+            options={useState}
             onLeaveFeedback={this.plusVoice}
           />
         </Section>
@@ -65,5 +64,5 @@ export class App extends Component {
         </Section>
       </div>
     );
-  }
+  
 }
