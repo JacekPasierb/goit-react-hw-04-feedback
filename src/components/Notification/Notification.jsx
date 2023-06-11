@@ -1,4 +1,4 @@
-import React from 'react';
+
 import css from './NotificationStyle.module.css';
 import PropTypes from 'prop-types';
 
