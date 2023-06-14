@@ -5,32 +5,29 @@ import { Notification } from "./Notification/Notification";
 import { Section } from "./Section/Section";
 
 export const App = () => {
-  const [good, setGood] = useState(0);
-  const [neutral, setNeutral] = useState(0);
-  const [bad, setBad] = useState(0);
+  const [values, setValues] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  });
+ 
 
   const plusVoice = (option) => {
-    switch (option) {
-      case "good":
-        setGood((prev) => prev + 1);
-        break;
-      case "neutral":
-        setNeutral((prev) => prev + 1);
-        break;
-      case "bad":
-        setBad((prev) => prev + 1);
-        break;
-      default:
-    }
+    setValues((prevValues) => ({
+      ...prevValues,
+      [option]: prevValues[option] + 1,
+    }));
   };
 
   const countTotalFeedback = () => {
+    const { good, neutral, bad } = values;
     const total = good + neutral + bad;
 
     return total;
   };
 
   const countPositiveFeedbackPercentage = () => {
+    const { good } = values;
     const percentage = Math.round((good / countTotalFeedback()) * 100);
 
     return percentage;
@@ -57,9 +54,9 @@ export const App = () => {
       <Section title="Statistics">
         {countTotalFeedback() > 0 ? (
           <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
+            good={values.good}
+            neutral={values.neutral}
+            bad={values.bad}
             total={countTotalFeedback()}
             positivePercentage={countPositiveFeedbackPercentage()}
           />
